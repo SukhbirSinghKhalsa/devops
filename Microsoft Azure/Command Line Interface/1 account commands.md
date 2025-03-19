@@ -84,7 +84,7 @@ az find COMMAND
 az find "az storage account create"
 ```
 
-## Azure Account, Authentication, Subscriptions related commands
+## Azure Account, Authentication, Management Groups, Subscriptions related commands
 ### These set of commands will help us login into our azure account, get subscription details, change the subscription and so on.
 
 1. Login into your azure account, like UI, just type `az login` and it will open one prompt asking to sign in   
@@ -129,6 +129,38 @@ az account list-locations --output table
 ```bash
 az account set --subscription "<SUBSCRIPTION ID / NAME>"
 ```
+
+9. To logout from your currenlty logged in account
+```bash
+az logout
+```
+
+<br>
+
+> List Azure Hierarchy!   
+> Tenant root group --> Management Groups --> Subscriptions --> Resource Groups --> Resources   
+<br>
+
+> What is management groups ?   
+> Management Groups comes on 2nd position in terms of Azure hierarchy,   
+> which helps us to create a secure layer where we can add policies to multiple subscriptions,   
+> we can also set Goverance rules, give Identify Access Control(IAM) here to desired users, etc
+
+
+
+10. To Create a management group, we need one required field which is name of management group   
+[optional argument, --display-name can be passed, if not passed, it is kept same as --name argument]   
+```bash
+az account management-group create --name <management-group-name>  [--display-name <display-name>]
+```
+
+11. List all the management groups , [needs high role, some roles might return error  trying to list it]
+```bash
+az account management-group list
+```
+
+12. 
+
 
 ## Resouce group Creation commands
 ### These set of commands will help us in creation of resouce groups, list them, deleting, updating, checking if resource group already present, and more.
