@@ -1,4 +1,15 @@
 1_Terraform/.terraform*
 1_Terraform/terraform.tfstate*
-1_Terraform/Module Basics/.terraform*
-1_Terraform/Module Basics/terraform.tfstate*
+
+1_Terraform/Module/Basics/.terraform*
+1_Terraform/Module/Basics/terraform.tfstate*
+
+
+1_Terraform/Module/Root_Child_Module/parent_module/sandbox/.terraform*
+1_Terraform/Module/Root_Child_Module/parent_module/sandbox/terraform.tfstate*
+
+1_Terraform/Module/Root_Child_Module/parent_module/production/.terraform*
+1_Terraform/Module/Root_Child_Module/parent_module/production/terraform.tfstate*
+
+1_Terraform/Module/Root_Child_Module/parent_module/development/.terraform*
+1_Terraform/Module/Root_Child_Module/parent_module/development/terraform.tfstate*

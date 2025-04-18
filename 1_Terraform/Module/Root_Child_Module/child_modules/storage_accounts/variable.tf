@@ -1,0 +1,1 @@
+variable "stg_arguments" {}
