@@ -4,31 +4,33 @@
 # no flexibility of changing names
 # no flexibikity in deletion also, may need to delete all the resources
 
+
+#COUNT meta_argument demonstration with String Interpolation (concatination)
 resource "azurerm_resource_group" "resource_group" {
-  count    = 2 #2 --> 1 after creation of 2 rgs
-  name     = "rg-prod-${count.index}"
+  count    = 2
+  name     = "rg-prod-${count.index}" #String Interpolation
   location = "central india"
 }
 
 
-#list converted to set and used with for each
+#list converted to set to iterate it and used with for each to create 3 resource groups
 resource "azurerm_resource_group" "resource_group_1" {
-  for_each = toset(["1","2","3"])
-  name = each.value
+  for_each = toset(["1", "2", "3"])
+  name     = "rg-sandbox-00${each.value}"
   location = "west us"
 }
 
-#map with 2 maps inside it  and used with for each
+#Basic Map with 2 key value pairs and used with for each t create 2 resouce groups
 resource "azurerm_resource_group" "resource_group_2" {
   for_each = {
-      mehdi = "east us"
-      loc   = "west us"
+    rg-prod-001 = "east us"
+    rg-prod-002 = "west us"
   }
-  name     = each.key
-  location = each.value
+  name     = each.key   #all the keys
+  location = each.value #all the values
 }
 
-#map with 2 maps inside it  and used with for each
+#map with 2 maps inside it  and used with for each to create 2 resource groups
 resource "azurerm_resource_group" "resource_group_1" {
   for_each = {
     rg1 = {

@@ -1,19 +1,10 @@
-# ---------------------------------terraform block to initiate the providers
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "4.26.0"
-    }
-  }
-}
+#Variables are the memory block used to temporarily store our values
+# It can works as placeholder for our dynamic or static values
 
-provider "azurerm" {
-  features {
+# It can be of different datatypes 
+# String, Number, Boolean, List, Set, Map are some of them
 
-  }
-  subscription_id = ""
-}
+# In Terraform, variable is block with all optional arguments such as type, defination, default and others
 
 
 
@@ -53,7 +44,7 @@ resource "azurerm_resource_group" "name-bool" {
 # ---------------------------------variable of type list
 variable "rg-name-list" {
   type    = list(any)
-  default = ["mehdi-bhai", "east us", "mehdi-bhai", "west us", "1", 4, 5, "7Mehdi", true]
+  default = ["mehdi-bhai", "east us", "oves-bhai", "west us", "1", 4, 5, "7Mehdi", true]
 }
 resource "azurerm_resource_group" "name-list" {
   name     = var.rg-name-list[0]
