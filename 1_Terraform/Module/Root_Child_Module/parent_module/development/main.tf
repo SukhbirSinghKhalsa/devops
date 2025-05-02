@@ -8,3 +8,7 @@ module "storage_accounts" {
   source        = "../../child_modules/storage_accounts"
   stg_arguments = var.stg_arguments_setter
 }
+
+# output "rgidOutput" {
+#   value = module.resource_groups.rgid
+# }
