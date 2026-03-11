@@ -95,14 +95,16 @@ resource "azurerm_storage_account" "storage_account" {
 
 ### Explanation
 
-each.key → map key (storage1)
-each.value → object containing multiple properties
+```bash
+each.key                            → map key (storage1)   
+each.value                          → object containing multiple properties
 
-each.value.name → storage account name  
-each.value.rg_name → resource group  
-each.value.location → deployment location  
-each.value.account_tier → performance tier  
+each.value.name                     → storage account name  
+each.value.rg_name                  → resource group  
+each.value.location                 → deployment location  
+each.value.account_tier             → performance tier  
 each.value.account_replication_type → replication type  
+```
 
 ## 3. Data Block
 
