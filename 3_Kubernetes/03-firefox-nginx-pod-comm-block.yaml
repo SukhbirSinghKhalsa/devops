@@ -1,0 +1,80 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    app: nginx
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      ports:
+        - containerPort: 80
+
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: firefox-pod
+  labels:
+    app: firefox
+spec:
+  containers:
+    - name: firefox-container
+      image: linuxserver/firefox
+      ports:
+        - containerPort: 3000
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: block-firefox-to-nginx
+spec:
+  podSelector:
+    matchLabels:
+      app: nginx
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: block-firefox-to-nginx
+spec:
+  podSelector:
+    matchLabels:
+      app: nginx
+  ingress:
+    - ports:
+        - protocol: TCP
+          port: 80
+      from:
+        - podSelector:
+            matchLabels:
+              app: firefox
+
+
+
+
+# kubectl apply -f 03-firefox-nginx-pod.yaml
+
+# kubectl get pods  
+# --> to see both nginx-pod and firefox-pod running
+
+# kubectl describe pod nginx-pod 
+# --> to see the details of the nginx-pod
+
+# kubectl describe pod firefox-pod 
+# --> to see the details of the firefox-pod
+
+# kubectl port-forward pod/firefox-pod 9090:3000
+# --> to forward the port 3000 of the firefox-pod to the local port 9090
+
+# kubectl get pod -owide 
+# --> to get the IP address of the nginx-pod
+
+
+# kubectl apply -f 03-firefox-nginx-pod.yaml --selector name=block-firefox-to-nginx

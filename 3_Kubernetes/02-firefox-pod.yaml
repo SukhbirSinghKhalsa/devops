@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: firefox-pod
+spec:
+    - name: firefox-container
+      image: linuxserver/firefox
+      ports:
+        - containerPort: 3000
+
+# kubectl apply -f 02-firefox-pod.yaml
+# kubectl get pods
+# kubectl describe pod firefox-pod
