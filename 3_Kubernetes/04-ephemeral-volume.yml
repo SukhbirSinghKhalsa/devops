@@ -1,0 +1,26 @@
+# disk <-- pv <-- pvc <-- pod
+# 2 volume types: ephemeral and persistent
+# ephemeral: data is lost when pod is deleted eg. emptyDir, configMap, secret
+# persistent: data is retained even when pod is deleted eg. hostPath, nfs, gcePersistentDisk, awsElasticBlockStore, azureDisk, azureFile, vsphereVolume, cinder, cephfs, flocker, glusterfs, persistentVolumeClaim
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+spec:
+  containers:
+    - name: nginx-cont
+      image: nginx
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: nginx-volume
+          mountPath: /data/path
+  volumes:
+    - name: nginx-volume
+      emptyDir:
+        sizeLimit: 2Gi
+
+# kubectl apply -f 04-pesistant-volume.yaml
+# kubectl get pods
+# kubectl exec -it nginx-pod -- bash
