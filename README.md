@@ -67,9 +67,11 @@ finding connected weak points to enter into system
 - example: - storage account has public access
 - example2:  no alerts/ metrics are configured for virtual machines or storage accounts
 
+----
 
 #### Detailed documentation from OWASP: https://github.com/OWASP/DevSecOpsGuideline
 
+----
 
 #### some examples of secutity checks 
 | Area | Status | Notes |
@@ -134,3 +136,31 @@ GitHub Actions workflows exist for:
 ### 11. Zone Redundancy
 ACA environments use `zone_redundancy_enabled`, which spreads workloads across Azure availability zones for higher resilience.
 
+----
+
+## Steps to be followed in nut shell
+
+### Pre Commit -
+
+- Secrets management
+- Linting code
+- Repository hardening
+
+
+### Build
+- SCA - to prevent any vulnerable libraries pushed to live environment
+- SAST - white box testing - debug without execution
+- Container Security
+- IaC Security
+
+
+### Test
+- IAST
+- DAST - black box testing
+- MAST
+- API Security
+
+### Release
+
+
+### Deploy
