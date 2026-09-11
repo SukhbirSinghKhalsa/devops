@@ -1,3 +1,15 @@
+
+resource_groups = {
+  rg1 = {
+    name     = "rg1"
+    location = "Central India"
+  }
+
+  rg2 = {
+    name     = "rg2"
+    location = "East US"
+  }
+}
 virtual_network = {
   vnet1 = {
     name          = "peternetwork1"
